@@ -3,14 +3,12 @@
  * https://developers.cloudflare.com/workers/wrangler/configuration/
  */
 {
-	"$schema": "node_modules/wrangler/config-schema.json",
+	// "$schema": "https://schemas.cloudflare.com/wrangler.json",
 	"name": "d1-demo",
 	"main": "src/index.ts",
 	"compatibility_date": "2025-12-12",
 	"compatibility_flags": [
 		"global_fetch_strictly_public"
-
-	
 	],
 	"assets": {
 		// The path to the directory containing the `index.html` file to be served at `/`
@@ -19,15 +17,19 @@
 	"observability": {
 		"enabled": true
 	},
-
-	
-    "d1_databases": [
-    {
-      "binding": "fcforum",
-      "database_name": "fcforum",
-      "database_id": "1f18a800-54ef-4bfc-9534-16f56fd58022"
-         }
-      ]
-    
-	
+	"d1_databases": [
+		{
+			"binding": "fcforum",
+			"database_name": "fcforum",
+			"database_id": "1f18a800-54ef-4bfc-9534-16f56fd58022"
+		}
+	],
+	"r2_buckets": [
+		
+		{
+			"bucket_name": "player-review",
+			"binding": "player_review",
+			"remote": true
+		}
+	]
 }
