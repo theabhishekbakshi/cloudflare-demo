@@ -5,15 +5,33 @@ import {
 } from "./player_review/service";
 import type { Env } from "./types";
 
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
+
+function json(data: any, status = 200) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: {
+      "Content-Type": "application/json",
+      ...corsHeaders,
+    },
+  });
+}
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
 
-    const corsHeaders = {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-    };
+    // ✅ MUST be first
+    if (request.method === "OPTIONS") {
+      return new Response(null, {
+        status: 204,
+        headers: corsHeaders,
+      });
+    }
+
     const url = new URL(request.url);
     const path = url.pathname;
     const method = request.method;
@@ -21,7 +39,7 @@ export default {
     // GET /reviews
     if (method === "GET" && path === "/reviews") {
       const reviews = await fetchAllReviews(env);
-      return Response.json(reviews);
+      return json(reviews);
     }
 
     // GET /reviews/:id
@@ -30,10 +48,10 @@ export default {
       const review = await fetchReviewById(env, id);
 
       if (!review) {
-        return Response.json({ error: "Not found" }, { status: 404 });
+        return json({ error: "Not found" }, 404);
       }
 
-      return Response.json(review);
+      return json(review);
     }
 
     // POST /reviews
@@ -41,13 +59,17 @@ export default {
       const body = await request.json() as Record<string, any>;
       const result = await createPlayerReview(env, body);
 
-      return Response.json({
-        success: true,
-        id: result.id,
-        image: result.imagePath,
-      });
+      return json(
+        {
+          success: true,
+          id: result.id,
+          image: result.imagePath,
+        },
+        201
+      );
     }
 
-    return new Response("Not Found", { status: 404 });
+    // ✅ 404 WITH CORS
+    return json({ error: "Route not found" }, 404);
   },
 };
