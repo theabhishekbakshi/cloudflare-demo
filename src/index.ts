@@ -5,8 +5,15 @@ import {
 } from "./player_review/service";
 import type { Env } from "./types";
 
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
+
+    const corsHeaders = {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+    };
     const url = new URL(request.url);
     const path = url.pathname;
     const method = request.method;
