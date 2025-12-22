@@ -1,7 +1,12 @@
 import { uploadReviewImage } from "./r2";
-import { insertPlayerReview } from "./d1";
+import {
+  insertPlayerReview,
+  getAllPlayerReviews,
+  getPlayerReviewById,
+} from "./d1";
 import type { Env } from "../types";
 
+// CREATE
 export async function createPlayerReview(
   env: Env,
   body: Record<string, any>
@@ -10,7 +15,7 @@ export async function createPlayerReview(
 
   if (body.imageBase64) {
     imagePath = await uploadReviewImage(
-      env.player_review, // 👈 lowercase binding
+      env.player_review,
       body.imageBase64,
       `${body.playerName}-${Date.now()}.png`
     );
@@ -40,4 +45,14 @@ export async function createPlayerReview(
   });
 
   return { id, imagePath };
+}
+
+// GET ALL
+export async function fetchAllReviews(env: Env) {
+  return await getAllPlayerReviews(env.fcforum);
+}
+
+// GET BY ID
+export async function fetchReviewById(env: Env, id: string) {
+  return await getPlayerReviewById(env.fcforum, id);
 }

@@ -1,3 +1,4 @@
+// INSERT
 export async function insertPlayerReview(
   db: D1Database,
   data: {
@@ -59,4 +60,24 @@ export async function insertPlayerReview(
     .run();
 
   return res.meta?.last_row_id;
+}
+
+// GET ALL
+export async function getAllPlayerReviews(db: D1Database) {
+  const res = await db
+    .prepare("SELECT * FROM PLAYER_REVIEWS ORDER BY createdDate DESC")
+    .all();
+
+  return res.results;
+}
+
+// GET BY ID
+export async function getPlayerReviewById(
+  db: D1Database,
+  id: string
+) {
+  return await db
+    .prepare("SELECT * FROM PLAYER_REVIEWS WHERE id = ?")
+    .bind(id)
+    .first();
 }

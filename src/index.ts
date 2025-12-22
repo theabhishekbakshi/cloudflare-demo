@@ -1,13 +1,37 @@
-import { createPlayerReview } from "./player_review/service";
+import {
+  createPlayerReview,
+  fetchAllReviews,
+  fetchReviewById,
+} from "./player_review/service";
 import type { Env } from "./types";
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
+    const path = url.pathname;
+    const method = request.method;
 
-    if (request.method === "POST" && url.pathname === "/reviews") {
+    // GET /reviews
+    if (method === "GET" && path === "/reviews") {
+      const reviews = await fetchAllReviews(env);
+      return Response.json(reviews);
+    }
+
+    // GET /reviews/:id
+    if (method === "GET" && path.startsWith("/reviews/")) {
+      const id = path.split("/")[2];
+      const review = await fetchReviewById(env, id);
+
+      if (!review) {
+        return Response.json({ error: "Not found" }, { status: 404 });
+      }
+
+      return Response.json(review);
+    }
+
+    // POST /reviews
+    if (method === "POST" && path === "/reviews") {
       const body = await request.json() as Record<string, any>;
-
       const result = await createPlayerReview(env, body);
 
       return Response.json({
