@@ -36,6 +36,29 @@ export default {
     const path = url.pathname;
     const method = request.method;
 
+    // CMS Sync endpoint - executes raw SQL from CMS
+    if (method === "POST" && path === "/") {
+      try {
+        const body = await request.json() as Record<string, any>;
+
+        // Execute the SQL batch from CMS
+        if (body.sql) {
+          const result = await env.fcforum.exec(body.sql);
+          return json({
+            success: true,
+            result: result
+          });
+        }
+
+        return json({ error: "Missing sql parameter" }, 400);
+      } catch (error: any) {
+        return json({
+          success: false,
+          error: error.message
+        }, 500);
+      }
+    }
+
     // GET /reviews
     if (method === "GET" && path === "/reviews") {
       const reviews = await fetchAllReviews(env);
