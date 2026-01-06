@@ -69,6 +69,19 @@ export default {
       );
     }
 
+    if (method === "DELETE" && path.startsWith("/reviews/")) {
+      const id = path.split("/")[2];
+
+      const del = await env.fcforum.prepare(
+        "DELETE FROM PLAYER_REVIEWS WHERE id = ?"
+      ).bind(id).run();
+
+      return Response.json({
+        success: true,
+        deleted: del.meta?.changes,
+      });
+    }
+
     // ✅ 404 WITH CORS
     return json({ error: "Route not found" }, 404);
   },
