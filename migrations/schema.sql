@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS PLAYER_REVIEWS (
   playerName TEXT NOT NULL,
   pos TEXT NOT NULL,
   imageReview TEXT,
-  urlSlugCopy TEXT
+  urlSlugCopy TEXT,
   eventName TEXT NOT NULL,
   wf_1 TEXT,
   sm1 TEXT,
