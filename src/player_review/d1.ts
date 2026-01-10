@@ -81,3 +81,16 @@ export async function getPlayerReviewById(
     .bind(id)
     .first();
 }
+
+// DELETE BY ID
+export async function deletePlayerReviewById(
+  db: D1Database,
+  id: string
+) {
+  const res = await db
+    .prepare("DELETE FROM PLAYER_REVIEWS WHERE id = ?")
+    .bind(id)
+    .run();
+
+  return res.meta?.changes ?? 0;
+}
