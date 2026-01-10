@@ -42,6 +42,6 @@ CREATE TABLE IF NOT EXISTS PLAYER_REVIEWS (
   st_type4 TEXT NOT NULL,
   st_type5 TEXT NOT NULL,
   st_type6 TEXT NOT NULL,
-  playerReviews_item TEXT,
+  playerReviews_item TEXT
 );
 
