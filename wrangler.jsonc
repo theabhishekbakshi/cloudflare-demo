@@ -21,7 +21,8 @@
 		{
 			"binding": "fcforum",
 			"database_name": "fcforum",
-			"database_id": "1f18a800-54ef-4bfc-9534-16f56fd58022"
+			"database_id": "1f18a800-54ef-4bfc-9534-16f56fd58022",
+			"remote": true
 		}
 	],
 	"r2_buckets": [
