@@ -2,6 +2,7 @@ import {
   fetchAllReviews,
   fetchReviewById,
   createPlayerReview,
+  deletePlayerReview,
 } from "../player_review/service";
 import type { Env } from "../types";
 
@@ -23,10 +24,11 @@ export async function reviewsRouter(req: Request, env: Env) {
     return Response.json(await createPlayerReview(env, body), { status: 201 });
   }
 
-//   if (method === "DELETE" && pathname.startsWith("/reviews/")) {
-//     const id = pathname.split("/")[2];
-//     return Response.json(await deleteReview(env, id));
-//   }
+  if (method === "DELETE" && pathname.startsWith("/reviews/")) {
+    const id = pathname.split("/")[2];
+    const result = await deletePlayerReview(env, id);
+    return Response.json(result, { status: result.success ? 200 : 404 });
+  }
 
   return new Response("Not Found", { status: 404 });
 }

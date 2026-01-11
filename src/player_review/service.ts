@@ -3,6 +3,7 @@ import {
   insertPlayerReview,
   getAllPlayerReviews,
   getPlayerReviewById,
+  deletePlayerReviewById,
 } from "./d1";
 import type { Env } from "../types";
 
@@ -55,4 +56,10 @@ export async function fetchAllReviews(env: Env) {
 // GET BY ID
 export async function fetchReviewById(env: Env, id: string) {
   return await getPlayerReviewById(env.fcforum, id);
+}
+
+// DELETE BY ID
+export async function deletePlayerReview(env: Env, id: string) {
+  const deleted = await deletePlayerReviewById(env.fcforum, id);
+  return { success: deleted > 0, deleted };
 }
