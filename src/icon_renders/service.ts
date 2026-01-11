@@ -23,7 +23,7 @@ export async function createIconRender(env: Env, body: any) {
   }
 
   const imagePath = await uploadIconImage(
-    env.player_review, // your R2 binding
+    env.fc_forum, // your R2 binding
     body.imageBase64,
     `${Date.now()}.png`
   );
@@ -42,7 +42,7 @@ export async function removeIconRender(env: Env, id: string) {
   if (!render) throw new Error("Icon render not found");
 
   if (render.playerImage) {
-    await deleteIconImage(env.player_review, render.playerImage);
+    await deleteIconImage(env.fc_forum, render.playerImage);
   }
 
   await deleteIconRender(env.fcforum, id);

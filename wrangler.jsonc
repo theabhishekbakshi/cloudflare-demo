@@ -25,12 +25,12 @@
 			"remote": true
 		}
 	],
+	
 	"r2_buckets": [
-		
-		{
-			"bucket_name": "player-review",
-			"binding": "player_review",
-			"remote": true
-		}
-	]
+    {
+      "bucket_name": "fc-forum",
+      "binding": "fc_forum",
+	  "remote": true
+    }
+  ]
 }
