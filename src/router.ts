@@ -1,6 +1,7 @@
 import { reviewsRouter } from "./routes/player_review";
 import { iconRenderRouter } from "./routes/icon_render";
 import { playerRenderRouter } from "./routes/player_render";
+import { nomineesRouter } from "./routes/nominees";
 
 import type { Env } from "./types";
 
@@ -30,6 +31,9 @@ export async function route(req: Request, env: Env) {
   if (pathname.startsWith("/player-renders-admin")) {
     return playerRenderRouter(req, env);
   }
+
+  if (pathname.startsWith("/nominees")) return nomineesRouter(req, env);
+  if (pathname.startsWith("/nominees-admin")) return nomineesRouter(req, env);
 
   return new Response("Not Found", { status: 404 });
 }
