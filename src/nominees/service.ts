@@ -36,7 +36,7 @@ export async function createNominee(env: Env, body: any) {
 
     if (body.images?.[imgKey]) {
       nomineeData[imgKey] = await uploadNomineeImage(
-        env.player_review,
+        env.fc_forum,
         body.images[imgKey],
         i,
         body.slug
@@ -60,7 +60,7 @@ export async function removeNominee(env: Env, id: string) {
     const key = `Nm${i}` as keyof typeof existing;
     if (existing[key]) {
       await deleteNomineeImage(
-        env.player_review,
+        env.fc_forum,
         existing[key] as string
       );
     }
