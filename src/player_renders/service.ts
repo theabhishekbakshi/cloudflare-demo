@@ -43,7 +43,7 @@ export async function createPlayerRender(env: Env, body: any) {
 
   // 1️⃣ Upload image to R2
   const imagePath = await uploadPlayerRenderImage(
-    env.player_review, // R2 binding
+    env.fc_forum, // R2 binding
     body.imageBase64,
     `${Date.now()}.png`
   );
@@ -75,7 +75,7 @@ export async function removePlayerRender(env: Env, id: string) {
   // 1️⃣ Delete image from R2
   if (existing.playerRenders) {
     await deletePlayerRenderImage(
-      env.player_review,
+      env.fc_forum,
       existing.playerRenders
     );
   }

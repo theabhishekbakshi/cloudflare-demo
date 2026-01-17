@@ -16,7 +16,7 @@ export async function createPlayerReview(
 
   if (body.imageBase64) {
     imagePath = await uploadReviewImage(
-      env.player_review,
+      env.fc_forum, // R2 binding
       body.imageBase64,
       `${body.playerName}-${Date.now()}.png`
     );
