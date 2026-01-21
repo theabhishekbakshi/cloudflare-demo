@@ -5,6 +5,7 @@ import { nomineesRouter } from "./routes/nominees";
 import { clubRouter } from "./routes/club";
 import { nationRouter } from "./routes/nation";
 import { leagueRouter } from "./routes/league";
+import { redeemCodesRouter } from "./routes/redeem_codes";
 
 import type { Env } from "./types";
 
@@ -49,6 +50,9 @@ export async function route(req: Request, env: Env) {
 
   if (pathname.startsWith("/leagues")) return leagueRouter(req, env);
   if (pathname.startsWith("/leagues-admin")) return leagueRouter(req, env);
+
+  if (pathname.startsWith("/redeem-codes")) return redeemCodesRouter(req, env);
+  if (pathname.startsWith("/redeem-codes-admin")) return redeemCodesRouter(req, env);
 
   return new Response("Not Found", { status: 404 });
 }
