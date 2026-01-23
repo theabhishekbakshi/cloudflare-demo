@@ -6,35 +6,26 @@ import { clubRouter } from "./routes/club";
 import { nationRouter } from "./routes/nation";
 import { leagueRouter } from "./routes/league";
 import { redeemCodesRouter } from "./routes/redeem_codes";
+import { conceptCardsRouter } from "./routes/concept_cards";
+import { officialCardsRouter } from "./routes/official_cards";
+import { otherVersionCardsRouter } from "./routes/other_version_cards";
 
 import type { Env } from "./types";
 
 export async function route(req: Request, env: Env) {
   const { pathname } = new URL(req.url);
 
-  if (pathname.startsWith("/reviews")) {
-    return reviewsRouter(req, env);
-  }
+  if (pathname.startsWith("/reviews")) { return reviewsRouter(req, env); }
+  if (pathname.startsWith("/reviews-admin")) { return reviewsRouter(req, env); }
 
-  if (pathname.startsWith("/reviews-admin")) {
-    return reviewsRouter(req, env);
-  }
 
-  if (pathname.startsWith("/icon-renders")) {
-    return iconRenderRouter(req, env);
-  }
+  if (pathname.startsWith("/icon-renders")) { return iconRenderRouter(req, env);}
+  if (pathname.startsWith("/icon-renders-admin")) { return iconRenderRouter(req, env);}
 
-  if (pathname.startsWith("/icon-renders-admin")) {
-    return iconRenderRouter(req, env);
-  }
 
-   if (pathname.startsWith("/player-renders")) {
-    return playerRenderRouter(req, env);
-  }
+  if (pathname.startsWith("/player-renders")) { return playerRenderRouter(req, env);}
+  if (pathname.startsWith("/player-renders-admin")) { return playerRenderRouter(req, env);}
 
-  if (pathname.startsWith("/player-renders-admin")) {
-    return playerRenderRouter(req, env);
-  }
 
   if (pathname.startsWith("/nominees")) return nomineesRouter(req, env);
   if (pathname.startsWith("/nominees-admin")) return nomineesRouter(req, env);
@@ -51,8 +42,21 @@ export async function route(req: Request, env: Env) {
   if (pathname.startsWith("/leagues")) return leagueRouter(req, env);
   if (pathname.startsWith("/leagues-admin")) return leagueRouter(req, env);
 
+
   if (pathname.startsWith("/redeem-codes")) return redeemCodesRouter(req, env);
   if (pathname.startsWith("/redeem-codes-admin")) return redeemCodesRouter(req, env);
+
+
+  if (pathname.startsWith("/concept-cards")) return conceptCardsRouter(req, env);
+  if (pathname.startsWith("/concept-cards-admin")) return conceptCardsRouter(req, env);
+
+
+  if (pathname.startsWith("/official-cards")) return officialCardsRouter(req, env);
+  if (pathname.startsWith("/official-cards-admin")) return officialCardsRouter(req, env);
+
+
+  if (pathname.startsWith("/other-version-cards")) return otherVersionCardsRouter(req, env);
+  if (pathname.startsWith("/other-version-cards-admin")) return otherVersionCardsRouter(req, env);
 
   return new Response("Not Found", { status: 404 });
 }

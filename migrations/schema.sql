@@ -188,3 +188,67 @@ CREATE TABLE IF NOT EXISTS REDEEM_CODES (
   reward TEXT NOT NULL,
   is_active INTEGER NOT NULL DEFAULT 1 CHECK (is_active IN (0,1))
 );
+
+
+
+
+
+-- concept_cards table
+CREATE TABLE IF NOT EXISTS CONCEPT_CARDS (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  createdDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updatedDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+  title TEXT ,
+
+  image_url TEXT,               -- image path or URL
+  card_type TEXT ,      -- e.g. 'Icon', 'Regular'
+
+  ovr_color TEXT  DEFAULT '#FFFFFF',
+  pos_color TEXT  DEFAULT '#FFFFFF',
+  name_color TEXT DEFAULT '#FFFFFF'
+
+);
+
+
+
+
+
+ -- official_cards table
+CREATE TABLE IF NOT EXISTS OFFICIAL_CARDS (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  createdDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updatedDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+  title TEXT,
+
+  image_url TEXT,   
+  animated_card TEXT,            -- image path or URL
+  card_type TEXT,      -- e.g. 'Icon', 'Regular'
+
+  ovr_color TEXT DEFAULT '#FFFFFF',
+  pos_color TEXT  DEFAULT '#FFFFFF',
+  name_color TEXT  DEFAULT '#FFFFFF',
+  has_animated INTEGER DEFAULT 1 CHECK (has_animated IN (0,1))
+);
+
+
+
+
+
+--other_version_cards
+CREATE TABLE IF NOT EXISTS OTHER_VERSION_CARDS (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  createdDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updatedDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+  title TEXT,
+
+  image_url TEXT,              -- image path or URL
+  card_type TEXT ,      -- e.g. 'Icon', 'Regular'
+
+  ovr_color TEXT DEFAULT '#FFFFFF',
+  pos_color TEXT DEFAULT '#FFFFFF',
+  name_color TEXT DEFAULT '#FFFFFF',
+  cards_applicable INTEGER DEFAULT 1 CHECK (cards_applicable IN (0,1))
+);
