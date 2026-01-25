@@ -3,27 +3,27 @@ CREATE TABLE IF NOT EXISTS PLAYER_REVIEWS (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   createdDate DATETIME DEFAULT CURRENT_TIMESTAMP,
   updatedDate DATETIME DEFAULT CURRENT_TIMESTAMP,
-  playerName TEXT NOT NULL,
-  pos TEXT NOT NULL,
+  playerName TEXT ,
+  pos TEXT ,
   imageReview TEXT,
   urlSlugCopy TEXT,
-  eventName TEXT NOT NULL,
+  eventName TEXT ,
   wf_1 TEXT,
   sm1 TEXT,
   st1 TEXT,
   alt1 TEXT,
   alt2 TEXT,
   alt3 TEXT,
-  pros TEXT NOT NULL,
-  cons TEXT NOT NULL,
-  verdict TEXT NOT NULL,
-  rating FLOAT NOT NULL,
-  stats1 INTEGER NOT NULL,
-  stats2 INTEGER NOT NULL,
-  stats3 INTEGER NOT NULL,
-  stats4 INTEGER NOT NULL,
-  stats5 INTEGER NOT NULL,
-  stats6 INTEGER NOT NULL,
+  pros TEXT ,
+  cons TEXT ,
+  verdict TEXT ,
+  rating FLOAT ,
+  stats1 INTEGER ,
+  stats2 INTEGER ,
+  stats3 INTEGER ,
+  stats4 INTEGER ,
+  stats5 INTEGER ,
+  stats6 INTEGER ,
   skill1 TEXT,
   skill2 TEXT,
   skill3 TEXT,
@@ -36,12 +36,12 @@ CREATE TABLE IF NOT EXISTS PLAYER_REVIEWS (
   skillImage4 TEXT,
   skillImage5 TEXT,
   skillImage6 TEXT,
-  st_type1 TEXT NOT NULL,
-  st_type2 TEXT NOT NULL,
-  st_type3 TEXT NOT NULL,
-  st_type4 TEXT NOT NULL,
-  st_type5 TEXT NOT NULL,
-  st_type6 TEXT NOT NULL,
+  st_type1 TEXT ,
+  st_type2 TEXT ,
+  st_type3 TEXT ,
+  st_type4 TEXT ,
+  st_type5 TEXT ,
+  st_type6 TEXT ,
   playerReviews_item TEXT
 );
 
@@ -50,9 +50,9 @@ CREATE TABLE IF NOT EXISTS ICON_RENDERS (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   createdDate DATETIME DEFAULT CURRENT_TIMESTAMP,
   updatedDate DATETIME DEFAULT CURRENT_TIMESTAMP,
-  playerRenders TEXT NOT NULL,
-  nation TEXT NOT NULL,
-  playerImage TEXT NOT NULL
+  playerRenders TEXT ,
+  nation TEXT ,
+  playerImage TEXT 
 );
 
 
@@ -61,10 +61,10 @@ CREATE TABLE IF NOT EXISTS PLAYER_RENDERS (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   createdDate DATETIME DEFAULT CURRENT_TIMESTAMP,
   updatedDate DATETIME DEFAULT CURRENT_TIMESTAMP,
-  playerRenders TEXT NOT NULL,
-  playerName TEXT NOT NULL,
-  club TEXT NOT NULL,
-  nationality TEXT NOT NULL
+  playerRenders TEXT ,
+  playerName TEXT ,
+  club TEXT ,
+  nationality TEXT 
 );
 
 
