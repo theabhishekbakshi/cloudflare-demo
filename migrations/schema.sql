@@ -252,3 +252,185 @@ CREATE TABLE IF NOT EXISTS OTHER_VERSION_CARDS (
   name_color TEXT DEFAULT '#FFFFFF',
   cards_applicable INTEGER DEFAULT 1 CHECK (cards_applicable IN (0,1))
 );
+
+--TOP 10 CARDS table
+CREATE TABLE IF NOT EXISTS TOP_10_CARDS (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  createdDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updatedDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+  title TEXT,
+  
+  img_1 TEXT,            --image player
+  name_1 TEXT,
+  rlink1 TEXT,
+  mv1 TEXT,
+  wf1 TEXT,              --image
+  sm1 TEXT,              --image
+  st1 TEXT,              --image
+
+  img_2 TEXT,            --image player
+  name_2 TEXT,
+  rlink2 TEXT,
+  mv2 TEXT,
+  wf2 TEXT,              --image
+  sm2 TEXT,              --image
+  st2 TEXT,              --image
+
+  img_3 TEXT,            --image player
+  name_3 TEXT,
+  rlink3 TEXT,
+  mv3 TEXT,
+  wf3 TEXT,              --image
+  sm3 TEXT,              --image
+  st3 TEXT,              --image
+
+  img_4 TEXT,            --image player
+  name_4 TEXT,
+  rlink4 TEXT,
+  mv4 TEXT,
+  wf4 TEXT,              --image
+  sm4 TEXT,              --image
+  st4 TEXT,              --image
+
+  img_5 TEXT,            --image player
+  name_5 TEXT,
+  rlink5 TEXT,
+  mv5 TEXT,
+  wf5 TEXT,              --image
+  sm5 TEXT,              --image
+  st5 TEXT,              --image
+
+  img_6 TEXT,            --image player
+  name_6 TEXT,
+  rlink6 TEXT,
+  mv6 TEXT,
+  wf6 TEXT,              --image
+  sm6 TEXT,              --image
+  st6 TEXT,              --image
+
+  img_7 TEXT,            --image player
+  name_7 TEXT,
+  rlink7 TEXT,
+  mv7 TEXT,
+  wf7 TEXT,              --image
+  sm7 TEXT,              --image
+  st7 TEXT,              --image
+
+  img_8 TEXT,            --image player
+  name_8 TEXT,
+  rlink8 TEXT,
+  mv8 TEXT,
+  wf8 TEXT,              --image
+  sm8 TEXT,              --image
+  st8 TEXT,              --image
+
+  img_9 TEXT,            --image player
+  name_9 TEXT,
+  rlink9 TEXT,
+  mv9 TEXT,
+  wf9 TEXT,              --image
+  sm9 TEXT,              --image
+  st9 TEXT,              --image
+
+  img_10 TEXT,           --image player
+  name_10 TEXT,
+  rlink10 TEXT,
+  mv10 TEXT,
+  wf10 TEXT,             --image
+  sm10 TEXT,             --image
+  st10 TEXT              --image
+); 
+
+--Top 5 Mid-Budget table
+
+CREATE TABLE IF NOT EXISTS TOP_5_MID_CARDS (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  createdDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updatedDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+  title TEXT,
+  
+  img_1 TEXT,            --image player
+  name_1 TEXT,
+  mv1 TEXT,
+  wf1 TEXT,              --image
+  sm1 TEXT,              --image
+  st1 TEXT,              --image
+
+  img_2 TEXT,            --image player
+  name_2 TEXT,
+  mv2 TEXT,
+  wf2 TEXT,              --image
+  sm2 TEXT,              --image
+  st2 TEXT,              --image
+
+  img_3 TEXT,            --image player
+  name_3 TEXT,
+  mv3 TEXT,
+  wf3 TEXT,              --image
+  sm3 TEXT,              --image
+  st3 TEXT,              --image
+
+  img_4 TEXT,            --image player
+  name_4 TEXT,
+  mv4 TEXT,
+  wf4 TEXT,              --image
+  sm4 TEXT,              --image
+  st4 TEXT,              --image
+
+  img_5 TEXT,            --image player
+  name_5 TEXT,
+  mv5 TEXT,
+  wf5 TEXT,              --image
+  sm5 TEXT,              --image
+  st5 TEXT,              --image
+
+  pos TEXT
+);
+
+--Top 5 Low-Budget table
+CREATE TABLE IF NOT EXISTS TOP_5_LOW_CARDS (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  createdDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updatedDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+  title TEXT,
+  
+  img_1 TEXT,            --image player
+  name_1 TEXT,
+  mv1 TEXT,
+  wf1 TEXT,              --image
+  sm1 TEXT,              --image
+  st1 TEXT,              --image
+
+  img_2 TEXT,            --image player
+  name_2 TEXT,
+  mv2 TEXT,
+  wf2 TEXT,              --image
+  sm2 TEXT,              --image
+  st2 TEXT,              --image
+
+  img_3 TEXT,            --image player
+  name_3 TEXT,
+  mv3 TEXT,
+  wf3 TEXT,              --image
+  sm3 TEXT,              --image
+  st3 TEXT,              --image
+
+  img_4 TEXT,            --image player
+  name_4 TEXT,
+  mv4 TEXT,
+  wf4 TEXT,              --image
+  sm4 TEXT,              --image
+  st4 TEXT,              --image
+
+  img_5 TEXT,            --image player
+  name_5 TEXT,
+  mv5 TEXT,
+  wf5 TEXT,              --image
+  sm5 TEXT,              --image
+  st5 TEXT,              --image
+
+  pos TEXT
+);
