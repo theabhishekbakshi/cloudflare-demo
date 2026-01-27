@@ -9,6 +9,9 @@ import { redeemCodesRouter } from "./routes/redeem_codes";
 import { conceptCardsRouter } from "./routes/concept_cards";
 import { officialCardsRouter } from "./routes/official_cards";
 import { otherVersionCardsRouter } from "./routes/other_version_cards";
+import { top10CardsRouter } from "./routes/top_10_cards";
+import { top5MidCardsRouter } from "./routes/top_5_mid_cards";
+import { top5LowCardsRouter } from "./routes/top_5_low_cards";
 
 import type { Env } from "./types";
 
@@ -57,6 +60,18 @@ export async function route(req: Request, env: Env) {
 
   if (pathname.startsWith("/other-version-cards")) return otherVersionCardsRouter(req, env);
   if (pathname.startsWith("/other-version-cards-admin")) return otherVersionCardsRouter(req, env);
+
+
+  if (pathname.startsWith("/top-10-cards")) return top10CardsRouter(req, env);
+  if (pathname.startsWith("/top-10-cards-admin")) return top10CardsRouter(req, env);
+
+
+  if (pathname.startsWith("/top-5-mid-cards")) return top5MidCardsRouter(req, env);
+  if (pathname.startsWith("/top-5-mid-cards-admin")) return top5MidCardsRouter(req, env);
+
+
+  if (pathname.startsWith("/top-5-low-cards")) return top5LowCardsRouter(req, env);
+  if (pathname.startsWith("/top-5-low-cards-admin")) return top5LowCardsRouter(req, env);
 
   return new Response("Not Found", { status: 404 });
 }
