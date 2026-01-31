@@ -1,33 +1,39 @@
-import {
-  fetchAllReviews,
-  fetchReviewById,
-  createPlayerReview,
-  deletePlayerReview,
-} from "../player_review/service";
 import type { Env } from "../types";
+import {
+  fetchPlayerReviews,
+  fetchPlayerReviewById,
+  createPlayerReview,
+  removePlayerReview,
+} from "../player_reviews/service";
 
-export async function reviewsRouter(req: Request, env: Env) {
+export async function playerReviewsRouter(req: Request, env: Env) {
   const { pathname } = new URL(req.url);
   const method = req.method;
 
-  if (method === "GET" && pathname === "/reviews") {
-    return Response.json(await fetchAllReviews(env));
+  // GET /player-reviews
+  if (method === "GET" && pathname === "/player-reviews") {
+    return Response.json(await fetchPlayerReviews(env));
   }
 
-  if (method === "GET" && pathname.startsWith("/reviews/")) {
+  // GET /player-reviews/:id
+  if (method === "GET" && pathname.startsWith("/player-reviews/")) {
     const id = pathname.split("/")[2];
-    return Response.json(await fetchReviewById(env, id));
+    return Response.json(await fetchPlayerReviewById(env, id));
   }
 
-  if (method === "POST" && pathname === "/reviews-admin") {
-    const body = (await req.json()) as Record<string, any>;
-    return Response.json(await createPlayerReview(env, body), { status: 201 });
+  // POST /player-reviews-admin
+  if (method === "POST" && pathname === "/player-reviews-admin") {
+    const body = await req.json() as any;
+    return Response.json(
+      await createPlayerReview(env, body),
+      { status: 201 }
+    );
   }
 
-  if (method === "DELETE" && pathname.startsWith("/reviews/")) {
+  // DELETE /player-reviews/:id
+  if (method === "DELETE" && pathname.startsWith("/player-reviews/")) {
     const id = pathname.split("/")[2];
-    const result = await deletePlayerReview(env, id);
-    return Response.json(result, { status: result.success ? 200 : 404 });
+    return Response.json(await removePlayerReview(env, id));
   }
 
   return new Response("Not Found", { status: 404 });
