@@ -437,3 +437,24 @@ CREATE TABLE IF NOT EXISTS TOP_5_LOW_CARDS (
 
   pos TEXT
 );
+
+--Player Database
+CREATE TABLE IF NOT EXISTS PLAYER_DATABASE(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  createdDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updatedDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+  
+  cardimg_url TEXT,
+  ovr_font_hex TEXT DEFAULT '#FFFFFF',
+  pos_font_hex TEXT DEFAULT '#FFFFFF',
+  name_font_hex TEXT DEFAULT '#FFFFFF',
+  headshot_url TEXT,
+  ovr INTEGER,
+  position TEXT,
+  player_name TEXT,
+  nationflag_url TEXT,
+  leaguecrest_url TEXT,
+  clublogo_url TExt,
+  card_type TEXT
+
+)
