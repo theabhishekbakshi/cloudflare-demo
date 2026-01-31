@@ -12,6 +12,7 @@ import { otherVersionCardsRouter } from "./routes/other_version_cards";
 import { top10CardsRouter } from "./routes/top_10_cards";
 import { top5MidCardsRouter } from "./routes/top_5_mid_cards";
 import { top5LowCardsRouter } from "./routes/top_5_low_cards";
+import { playerDatabaseRouter } from "./routes/player_database";
 
 import type { Env } from "./types";
 
@@ -72,6 +73,10 @@ export async function route(req: Request, env: Env) {
 
   if (pathname.startsWith("/top-5-low-cards")) return top5LowCardsRouter(req, env);
   if (pathname.startsWith("/top-5-low-cards-admin")) return top5LowCardsRouter(req, env);
+
+
+  if (pathname.startsWith("/players")) return playerDatabaseRouter(req, env);
+  if (pathname.startsWith("/players-admin")) return playerDatabaseRouter(req, env);
 
   return new Response("Not Found", { status: 404 });
 }
